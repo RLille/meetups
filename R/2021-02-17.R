@@ -1,6 +1,6 @@
 social(
   input = here::here("assets/poster.Rmd"),
-  output = here::here("meetups/2021-02-17.png"),
+  output = here::here("meetups/2021-02-17"),
   rmd_params = list(
     title = "Enseignement & R",
     author = "Mathilde Boissel & Julien Hamonier",

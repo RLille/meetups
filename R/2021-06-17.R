@@ -1,6 +1,6 @@
 social(
   input = here::here("assets/poster.Rmd"),
-  output = here::here("meetups/2021-06-17.png"),
+  output = here::here("meetups/2021-06-17"),
   rmd_params = list(
     title = 'Reproducible Computation at Scale in R with {targets}',
     author = "Will M. Landau",

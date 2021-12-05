@@ -1,6 +1,6 @@
 social(
   input = here::here("assets/poster.Rmd"),
-  output = here::here("meetups/2021-04-15.png"),
+  output = here::here("meetups/2021-04-15"),
   rmd_params = list(
     title = "My Journey To Transparency And Reproducibility",
     # subtitle = '<i class = "fab fa-docker"></i> & <i class = "fab fa-r-project"></i>',
