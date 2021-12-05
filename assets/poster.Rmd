@@ -5,17 +5,17 @@ params:
   author: "Firstname Lastname"
   institute: NULL
   date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 – 18 h 00 (CEST / UTC + 2)'
-  picture: "assets/user-solid.svg"
+  picture: "user-solid.svg"
   website: "[rlille.fr](https://rlille.fr/)"
 title: "R Lille - Poster"
 output:
   xaringan::moon_reader:
     self_contained: true
     mathjax: null
-    css: [assets/default.css, assets/fonts.css, assets/rlille.css]
+    css: [default.css, fonts.css, rlille.css]
     seal: false
     includes:
-      in_header: assets/_scripts.html
+      in_header: _scripts.html
     nature:
       ratio: "16:9"
       slideNumberFormat: |
