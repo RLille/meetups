@@ -12,6 +12,12 @@
 
 <td align="center">
 
+<img alt="Poster for 2020-01-31 Meetup" src="meetups/2020-01-31/ads/2020-01-31.png" width="192" height="108" /><br /><a href="meetups/2020-01-31">2020-01-31</a>
+
+</td>
+
+<td align="center">
+
 <img alt="Poster for 2020-10-07 Meetup" src="meetups/2020-10-07/ads/2020-10-07.png" width="192" height="108" /><br /><a href="meetups/2020-10-07">2020-10-07</a>
 
 </td>
@@ -28,15 +34,15 @@
 
 </td>
 
+</tr>
+
+<tr>
+
 <td align="center">
 
 <img alt="Poster for 2021-04-15 Meetup" src="meetups/2021-04-15/ads/2021-04-15.png" width="192" height="108" /><br /><a href="meetups/2021-04-15">2021-04-15</a>
 
 </td>
-
-</tr>
-
-<tr>
 
 <td align="center">
 
@@ -55,6 +61,10 @@
 <img alt="Poster for 2021-11-18 Meetup" src="meetups/2021-11-18/ads/2021-11-18.png" width="192" height="108" /><br /><a href="meetups/2021-11-18">2021-11-18</a>
 
 </td>
+
+</tr>
+
+<tr>
 
 <td align="center">
 
