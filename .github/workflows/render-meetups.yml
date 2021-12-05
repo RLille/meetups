@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           Rscript -e 'install.packages("pak")'
-          Rscript -e 'pak::pkg_install(c("here", "glue", callr", "pdftools", "qpdf", "magick"))'
+          Rscript -e 'pak::pkg_install(c("here", "glue", "callr", "pdftools", "qpdf", "magick"))'
           Rscript -e 'pak::pkg_install("rstudio/chromote")'
           Rscript -e 'pak::pkg_install("jhelvy/xaringanBuilder")'
 
