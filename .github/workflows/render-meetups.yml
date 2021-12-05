@@ -32,9 +32,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          Rscript -e 'install.packages(c("here", "glue", "remotes", "callr", "pdftools", "qpdf", "magick"), Ncpus = 4)'
-          Rscript -e 'remotes::install_github("rstudio/chromote")'
-          Rscript -e 'remotes::install_github("jhelvy/xaringanBuilder")'
+          Rscript -e 'install.packages("pak")'
+          Rscript -e 'pak::pkg_install(c("here", "glue", callr", "pdftools", "qpdf", "magick"))'
+          Rscript -e 'pak::pkg_install("rstudio/chromote")'
+          Rscript -e 'pak::pkg_install("jhelvy/xaringanBuilder")'
 
       - name: Render README
         run: Rscript -e 'rmarkdown::render("README.Rmd", output_options = list(html_preview = FALSE))'
