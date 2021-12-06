@@ -1,0 +1,329 @@
+---
+title: 'Lille - R User Group'
+date: 
+output: 
+  flexdashboard::flex_dashboard:
+    logo: logo.png
+    orientation: rows
+    vertical_layout: fill
+    theme: cerulean
+    social: [ "twitter", "facebook" ]
+    fig_width: 6.3
+    fig_height: 4.7
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+options(stringsAsFactors = FALSE)
+
+### Load packages
+library(tidyverse)
+library(readxl)
+library(gganimate)
+library(flexdashboard)
+
+source("https://github.com/mcanouil/DEV/raw/master/R/theme_black.R")
+
+theme_set(theme_black(base_size = 16))
+# knitr::opts_chunk$set(autodep = TRUE, cache = TRUE)
+
+knit_print.video_file <- function(x, options, autoplay = TRUE, ...) {
+  as_html_video <- function(x, autoplay) {
+    if (!requireNamespace("base64enc", quietly = TRUE)) {
+        stop("The base64enc package is required for showing video")
+    }
+    if (!requireNamespace("htmltools", quietly = TRUE)) {
+        stop("The htmltools package is required for showing video")
+    }
+    format <- tolower(sub("^.*\\.(.+)$", "\\1", x))
+    htmltools::HTML(
+      paste0(
+        "<video controls", ifelse(autoplay, " autoplay", ""), "><source src=\"data:video/", 
+        format, ";base64,", base64enc::base64encode(x), "\" type=\"video/mp4\"></video>"
+      )
+    )
+  }
+  if (grepl("\\.(mp4)|(webm)|(ogg)$", x, ignore.case = TRUE)) {
+    knitr::knit_print(htmltools::browsable(as_html_video(x, autoplay = autoplay)), options, ...)
+  } else {
+    warning("The video format doesn't support HTML", call. = FALSE)
+    invisible(NULL)
+  }
+}
+```
+
+```{r data, eval = !file.exists("data/survey_data.rds")}
+survey_data <- readxl::read_xlsx(path = "data/survey_data.xlsx") %>% 
+  dplyr::mutate(id = Horodateur) %>% 
+  dplyr::group_by(id) %>% 
+  dplyr::slice(dplyr::n()) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate_at(
+    .vars = vars(`Connaissez-vous R ?`, `Vous voulez en faire ?`, `Vous savez déjà en faire ?`),
+    .funs = ~factor(c("Oui" = "yes", "Non" = "no")[.x], levels = c("no", "yes"))
+  ) %>% 
+  dplyr::rename(
+    meeting_location = `Pour en discuter, vous préféreriez le faire :`,
+    meeting_time = `Pour une première réunion, vous souhaiteriez qu'elle se déroule :`
+  ) %>% 
+  dplyr::mutate(
+    meeting_location = purrr::map_chr(
+      .x = meeting_location, 
+      .f = ~switch(.x,
+        "bar ou restaurant" = "Both",
+        "Les deux" = "Both",
+        "Tout me va" = "Both",
+        "pas de préférence" = "Both",
+        "Dans une salle de réunion" = "Meeting Room",
+        "Salle de réunion avec script projetté" = "Meeting Room",
+        "Dans un bar" = "Pub"
+      )
+    ),
+    meeting_time = purrr::map_chr(
+      .x = meeting_time, 
+      .f = ~switch(.x,
+        "Un soir en semaine" = "Evening", 
+        "Un midi en semaine (par exemple un vendredi entre 12h et 13h30)" = "Lunch Break", 
+        "un jour ouvré entre 9h30-11h00 ou 14h30-16h00 ou 15h00-16h30" = "Working Hours ", 
+        "Tout me va" = "Any", 
+        "Un midi en semaine (pas le mardi et pas le jeudi)" = "Lunch Break"
+      )
+    )
+  ) %>% 
+  dplyr::arrange(Horodateur) %>% 
+  readr::write_rds("data/survey_data.rds")
+```
+
+```{r load-data}
+survey_data <- readr::read_rds("data/survey_data.rds")
+```
+
+
+# Survey Results 
+
+## Row {data-height=150}
+
+### Participants (unique)
+
+```{r}
+flexdashboard::valueBox(
+  value = nrow(survey_data), 
+  icon = "fa-users",
+  color = "primary"
+)
+```
+
+### Know what R is
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Connaissez-vous R ?"]]=="yes"), 
+  icon = "fa-code",
+  color = "primary"
+)
+```
+
+### Want to know how to use R
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Vous voulez en faire ?"]]=="yes"), 
+  icon = "fa-info",
+  color = "primary"
+)
+```
+
+### Already use R
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Vous savez déjà en faire ?"]]=="yes"), 
+  icon = "fa-thumbs-up",
+  color = "primary"
+)
+```
+
+
+
+## Row {data-height=850}
+
+### Reply over time
+
+```{r}
+ggplot2::ggplot(
+  data = dplyr::mutate(survey_data, n = 1:dplyr::n()), 
+  mapping = ggplot2::aes(x = Horodateur, y = n)
+) +
+  ggplot2::geom_line(size = 1.5) +
+  ggplot2::geom_point(
+    mapping = ggplot2::aes(fill = n, group = seq_along(Horodateur)),
+    colour = "white", 
+    shape = 21,
+    size = 3
+  ) +
+  ggplot2::scale_x_datetime(date_labels = "%b %d (%Y)") +
+  ggplot2::labs(x = "Time", y = "Cumulative number of participants") +
+  ggplot2::scale_fill_viridis_c(end = 0.95) +
+  ggplot2::theme(legend.position = "none")
+```
+
+### Meeting 
+
+```{r}
+survey_data %>% 
+  dplyr::count(meeting_time, meeting_location) %>% 
+  tidyr::complete(meeting_time, meeting_location, fill = list(n = 0)) %>% 
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(x = meeting_time, y = meeting_location)
+  ) +
+    ggplot2::geom_tile(mapping = ggplot2::aes(fill = n)) +
+    ggplot2::geom_text(mapping = ggplot2::aes(label = n), size = 10) +
+    ggplot2::labs(x = "Meeting Time", y = "Meeting Location", fill = "Count") +
+    ggplot2::scale_fill_viridis_c(end = 0.95) +
+    ggplot2::scale_x_discrete(expand = c(0, 0)) +
+    ggplot2::scale_y_discrete(expand = c(0, 0)) +
+    ggplot2::theme(
+      panel.grid = ggplot2::element_blank(), 
+      panel.border = ggplot2::element_blank(), 
+      legend.position = "none"
+    )
+```
+
+
+# Survey Results ("Pretty")
+
+## Row {data-height=150}
+
+### Participants (unique)
+
+```{r}
+flexdashboard::valueBox(
+  value = nrow(survey_data), 
+  icon = "fa-users",
+  color = "primary"
+)
+```
+
+### Know what R is
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Connaissez-vous R ?"]]=="yes"), 
+  icon = "fa-code",
+  color = "primary"
+)
+```
+
+### Want to know how to use R
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Vous voulez en faire ?"]]=="yes"), 
+  icon = "fa-info",
+  color = "primary"
+)
+```
+
+### Already use R
+
+```{r}
+flexdashboard::valueBox(
+  value = sum(survey_data[["Vous savez déjà en faire ?"]]=="yes"), 
+  icon = "fa-thumbs-up",
+  color = "primary"
+)
+```
+
+
+
+## Row {data-height=850}
+
+### Reply over time
+
+```{r}
+gganimate::animate(
+  plot = ggplot2::ggplot(
+      data = dplyr::mutate(survey_data, n = 1:dplyr::n()), 
+      mapping = ggplot2::aes(x = Horodateur, y = n)
+    ) +
+      ggplot2::geom_line(size = 1.5) +
+      ggplot2::geom_point(
+        mapping = ggplot2::aes(fill = n, group = seq_along(Horodateur)),
+        colour = "white", 
+        shape = 21,
+        size = 3
+      ) +
+      ggplot2::scale_x_datetime(date_labels = "%b %d (%Y)") +
+      ggplot2::labs(x = "Time", y = "Cumulative number of participants") +
+      ggplot2::scale_fill_viridis_c(end = 0.95) +
+      ggplot2::theme(legend.position = "none") +
+      gganimate::transition_reveal(along = Horodateur),
+  width = 6.3,
+  height = 4.7,
+  units = "in", 
+  res = 300,
+  bg = ggplot2::theme_get()$plot.background$colour,
+  renderer = gganimate::gifski_renderer()
+)
+```
+
+### Meeting 
+
+```{r}
+library(rayshader)
+library(rgl)
+library(gifski)
+p <- survey_data %>% 
+  dplyr::count(meeting_time, meeting_location) %>% 
+  tidyr::complete(meeting_time, meeting_location, fill = list(n = 0)) %>% 
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(x = meeting_time, y = meeting_location)
+  ) +
+    ggplot2::geom_tile(mapping = ggplot2::aes(fill = n)) +
+    ggplot2::geom_text(mapping = ggplot2::aes(label = n), size = 10, colour = "white") +
+    ggplot2::scale_fill_viridis_c(end = 0.95) +
+    ggplot2::scale_x_discrete(name = "Meeting Time", expand = c(0, 0)) +
+    ggplot2::scale_y_discrete(name = "Meeting Location", expand = c(0, 0)) +
+    ggplot2::theme_light() +
+    ggplot2::theme(
+      panel.grid = ggplot2::element_blank(), 
+      panel.border = ggplot2::element_blank(), 
+      legend.position = "none"
+    )
+
+
+phivec <- 20 + 70 * 1/(1 + exp(seq(-5, 10, length.out = 180)))
+phivecfull <- c(phivec, rev(phivec))
+thetavec <- 0 + 45 * sin(seq(0, 359, length.out = 360) * pi/180)
+zoomvechalf <- 0.5 + 0.5 * 1/(1 + exp(seq(-5, 10, length.out = 180)))
+zoomvec <- c(zoomvechalf, rev(zoomvechalf))
+
+rayshader::plot_gg(
+  p, height_aes = "fill", 
+  multicore = TRUE, raytrace = FALSE,
+  width = 6.3, height = 4.7, scale = 200, 
+  windowsize = c(6.3*150, 4.4*150), 
+  fov = 70, zoom = zoomvec[1], theta = thetavec[1], phi = phivecfull[1],
+  pointcontract = 1, soliddepth = -200
+)
+Sys.sleep(0.2)
+
+knit_print.video_file(
+  x = render_movie(
+    filename = file.path("figures", "movie.mp4"), 
+    type = "custom",
+    theta = thetavec, 
+    phi = phivecfull, 
+    zoom = zoomvec, 
+    fov = 0
+  ), 
+  options = list(
+    width = 1280,
+    height = 720,
+    res = 150
+  ), 
+  autoplay = FALSE
+)
+```
+
