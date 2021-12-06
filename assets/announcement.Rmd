@@ -1,0 +1,139 @@
+---
+params:
+  title: "Title"
+  author: "Firstname Lastname"
+  date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 – 18 h 00 (CEST / UTC + 2)'
+  date_short: "2021-04-29"
+  meetup_id: "XXXXX"
+  abstract: "Abstract"
+  biography: "Biography"
+  language: "en"
+title: '`r sprintf("[R Lille] \"%s\" - %s - %s", params[["title"]], params[["author"]], params[["date"]])`'
+pagetitle: Meetup
+output: github_document
+---
+
+```{r text-en, include = FALSE}
+text_en <- 'Dear all,
+
+R Lille (R User Group) will be hosting a meetup on %s, with %s.
+
+**%s**  
+**"%s" - %s*  
+**[http://meetup.rlille.fr/events/%s/](http://meetup.rlille.fr/events/%s/)**
+
+![Meetup RLille Poster - %s](https://raw.githubusercontent.com/RLille/meetups/main/meetups/%s/ads/%s.png)
+
+_[Abstract]_  
+%s
+
+_[Bio]_  
+%s
+
+_[A Propos]_  
+This event (in English) is organised by the R Lille user group ([https://rlille.fr/](https://rlille.fr/)) (Lille, France).
+
+_The meetup will be recorded and made available on YouTube ([http://youtube.rlille.fr/](http://youtube.rlille.fr/))._
+
+---
+
+If you are using R in your work or for fun and you want to learn new tricks, tips or simply to share and enjoy being part of friendly (worldwide) community, you should consider joining your local R User Group, which is R Lille ([https://rlille.fr/](https://rlille.fr/)).  
+We are always looking for speakers for "conference" talks (~1 hour), lightning talks (~20 minutes) and workshops.  
+If you want to participate, it\'s quite simple:
+
+- Pick a subject.
+- Tell us when you want to talk.
+- In French preferably, but English is welcome as well, especially for a worldwide audience.
+
+How to reach R Lille?
+
+- Twitter [https://twitter.com/rlille_rug](https://twitter.com/rlille_rug) (or [https://twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil))
+- Meetup [http://meetup.rlille.fr/](http://meetup.rlille.fr/)
+- Direct email to one of the organisers or to [rlille.rug@gmail.com](mailto:rlille.rug@gmail.com)
+
+---
+
+<table border=0 cellspacing=0 cellpadding=0 style="border-collapse:collapse;padding:0cm 0cm 0cm 0cm">
+ <tr>
+  <td style="padding:0cm 5.4pt 0cm 5.4pt">
+    <img border=0 width=78 height=78 src="https://raw.githubusercontent.com/RLille/logos/main/rlille.png" style="height:.816in;width:.816in" alt="R Lille logo" />
+  </td>
+  <td style="padding:0cm 5.4pt 0cm 5.4pt">
+  <p>
+    Best regards,  
+    Mickaël CANOUIL,  
+    For R Lille (<a href = "https://rlille.fr/">https://rlille.fr/"</a>).
+  </p>
+  </td>
+ </tr>
+</table>'
+```
+
+```{r text-fr, include = FALSE}
+text_en <- 'Bonjour à tous et toutes,
+
+R Lille organise un nouveau MeetUp le %s, avec %s !
+
+**%s**  
+**« %s » - %s**  
+**[http://meetup.rlille.fr/events/%s/](http://meetup.rlille.fr/events/%s/)**
+
+![Affiche Meetup RLille - %s](https://raw.githubusercontent.com/RLille/meetups/main/meetups/%s/ads/%s.png)
+
+_[Résumé]_  
+%s
+
+_[Bio]_  
+%s
+
+_[A Propos]_  
+Cet événement est organisé par R Lille ([https://rlille.fr/](https://rlille.fr/)) (Lille, France) et aura lieu en français.
+
+_Le Meetup sera enregistré et rendu disponible sur YouTube ([http://youtube.rlille.fr/](http://youtube.rlille.fr/))._
+
+---
+
+Si vous utilisez R dans votre travail ou pour le plaisir, et que vous voulez apprendre de nouvelles astuces ou simplement partager et faire partie d\'une communauté amicale (mondiale), vous devriez envisager de rejoindre votre groupe d\'utilisateurs R local, comme R Lille ([https://rlille.fr/](https://rlille.fr/)).  
+Nous sommes toujours à la recherche d\'orateurs·rices pour des conférences (~1 heure), des conférences éclair (~20 minutes) ou des ateliers.  
+Si vous souhaitez participer, rien de plus simple :
+
+* Choisissez un sujet.
+* Dites-nous quand vous êtes disponible.
+* En français ou en anglais (surtout si vous souhaitez toucher une audience plus large).
+
+Comment contacter R Lille ?
+
+* Twitter [https://twitter.com/rlille_rug](https://twitter.com/rlille_rug) (ou [https://twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil))
+* Meetup [http://meetup.rlille.fr/](http://meetup.rlille.fr/)
+* Directement à l\'un·e des organisateurs·trices par courriel ou à l\'adresse [rlille.rug@gmail.com](mailto:rlille.rug@gmail.com).
+
+---
+
+<table border=0 cellspacing=0 cellpadding=0 style="border-collapse:collapse;padding:0cm 0cm 0cm 0cm">
+ <tr>
+  <td style="padding:0cm 5.4pt 0cm 5.4pt">
+    <img border=0 width=78 height=78 src="https://raw.githubusercontent.com/RLille/logos/main/rlille.png" style="height:.816in;width:.816in" alt="Logo R Lille" />
+  </td>
+  <td style="padding:0cm 5.4pt 0cm 5.4pt">
+  <p>
+    Cordialement,  
+    Mickaël CANOUIL,  
+    Pour R Lille (<a href = "https://rlille.fr/">https://rlille.fr/"</a>).
+  </p>
+  </td>
+ </tr>
+</table>'
+```
+
+```{r content, results = "asis", echo = FALSE}
+cat(sprintf(
+  switch(EXPR = params[["language"]], "fr" = text_fr, "en" = text_en),
+  params[["date"]], params[["author"]],
+  params[["date"]],
+  params[["title"]], params[["author"]],
+  params[["meetup_id"]], params[["meetup_id"]],
+  params[["date_short"]], params[["date_short"]], params[["date_short"]],
+  params[["abstract"]],
+  params[["biography"]],
+))
+```
