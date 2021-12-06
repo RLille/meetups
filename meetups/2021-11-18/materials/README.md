@@ -2,6 +2,6 @@
 
 Speaker: Aniss Louchez
 
-- Video: 
+- Video: https://youtu.be/NSbnWCjTfGk
 
 - Slides: 
