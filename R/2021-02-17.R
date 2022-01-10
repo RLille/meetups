@@ -1,5 +1,6 @@
 social(
-  input = here::here("assets/poster.Rmd"),
+  input_poster = here::here("assets/poster.Rmd"),
+  input_announcement = here::here("assets/announcement.Rmd"),
   output = here::here("meetups/2021-02-17"),
   rmd_params = list(
     title = "Enseignement & R",

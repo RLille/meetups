@@ -24,8 +24,8 @@ library(callr)
 library(rmarkdown)
 library(xaringanBuilder)
 
-social <- function(input, output, rmd_params, chrome_path, delay = 1) {
-  print_to_pdf <- function(input, output, rmd_params, chrome_path, delay = 1) {
+social <- function(input_poster, input_announcement, output, rmd_params, chrome_path, delay = 1) {
+  render_meetup <- function(input_poster, input_announcement, output, rmd_params, chrome_path, delay = 1) {
     devnull <- sapply(
       X = file.path(output, c("materials", "ads")),
       FUN = dir.create, showWarnings = FALSE, recursive = TRUE
@@ -41,12 +41,28 @@ social <- function(input, output, rmd_params, chrome_path, delay = 1) {
         con = file.path(output, "materials", "README.md")
       )
     }
+    if (all(nzchar(rmd_params[c("meetup_id", "abstract", "biography")]))) {
+      rmarkdown::render(
+        input = input_announcement,
+        output_file = sprintf("%s/ads/%s.md", output, basename(output)),
+        encoding = "UTF-8",
+        params = rmd_params[c(
+          "title", "author", "date", "date_short",
+          "meetup_id", "abstract", "biography",
+          "language"
+        )]
+      )
+    }
 
     xaringan_poster <- rmarkdown::render(
-      input = input,
+      input = input_poster,
       output_dir = tempdir(),
       encoding = "UTF-8",
-      params = rmd_params
+      params = rmd_params[c(
+        "title", "subtitle", "author",
+        "institute", "date",
+        "picture", "website"
+      )]
     )
     on.exit(unlink(xaringan_poster))
     output_pdf <- sprintf("%s/ads/%s.pdf", output, basename(output))
@@ -57,9 +73,10 @@ social <- function(input, output, rmd_params, chrome_path, delay = 1) {
     invisible(output_pdf)
   }
   callr::r(
-    func = print_to_pdf,
+    func = render_meetup,
     args = list(
-      input = input,
+      input_poster = input_poster,
+      input_announcement = input_announcement,
       output = output,
       rmd_params = rmd_params,
       delay = delay
