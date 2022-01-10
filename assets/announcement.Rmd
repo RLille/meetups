@@ -134,6 +134,6 @@ cat(sprintf(
   params[["meetup_id"]], params[["meetup_id"]],
   params[["date_short"]], params[["date_short"]], params[["date_short"]],
   params[["abstract"]],
-  params[["biography"]],
+  params[["biography"]]
 ))
 ```
