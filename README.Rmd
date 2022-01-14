@@ -10,23 +10,41 @@ output: github_document
 
 ```{r, echo = FALSE, message = FALSE}
 source("assets/social.R")
-library(glue)
 library(here)
 
 rscript <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 meetup <- sub("\\.R$", "", basename(rscript))
-png <- sprintf("meetups/%s/ads/%s.png", meetup, meetup)
+base_ads <- paste0(sprintf("meetups/%s/ads/%s", meetup, meetup), c(".png", ".md"))
 
-outdated <- !file.exists(png) |
-  file.mtime(png) < file.mtime(rscript) |
-  file.mtime(png) < file.mtime("assets/social.R")
+outdated <- !all(sapply(base_ads, file.exists)) |
+  min(sapply(base_ads, file.mtime)) <  max(
+    sapply(
+      X = c(
+        rscript,
+        "assets/social.R",
+        "assets/poster.Rmd",
+        "assets/announcement.Rmd"
+      ),
+      FUN = file.mtime
+    )
+  )
 
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
 ```
 
 ```{r, results = "asis", echo = FALSE}
-img <- glue::glue('<img alt="Poster for {meetup} Meetup" src="{png}" width="192" height="108" />')
-png_link <- glue::glue('<a href="meetups/{meetup}">{meetup}</a>')
+cell <- sprintf(
+  paste0(
+    '<td align = "center">',
+      '<a href="meetups/%s/materials/README.md">',
+        '<img alt="Affiche du Meetup du %s" src="%s" width="192" height="108" />',
+        "<br/>",
+        "%s",
+      "</a>",
+    "</td>"
+  ),
+  meetup, meetup, base_ads[[1]], meetup
+)
 cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
 cols <- 4
 rows <- ceiling(length(cell) / cols)
