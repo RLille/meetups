@@ -6,6 +6,10 @@ social(
     institute = "Inserm U1283 / CNRS UMR8199 / Institut Pasteur de Lille / Université de Lille",
     date = "Mercredi 7 Octobre 2020 - 12:00 (CEST / UTC + 2)",
     picture = "https://avatars.githubusercontent.com/u/8896044",
-    website = "[mickael.canouil.fr](https://mickael.canouil.fr/)"
+    website = "[mickael.canouil.fr](https://mickael.canouil.fr/)",
+    meetup_id = "",
+    abstract = "",
+    biography = "",
+    language = "fr"
   )
 )

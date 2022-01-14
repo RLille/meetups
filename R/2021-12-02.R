@@ -6,6 +6,10 @@ social(
     institute = '<i class = "fab fa-r-project"></i>(esearch) Software Engineer & Blogger',
     date = "Jeudi 2 Décembre 2021 - 12:00 CET",
     picture = "https://masalmon.eu/img/barbie_office.jpg",
-    website = "[masalmon.eu](https://masalmon.eu/)"
+    website = "[masalmon.eu](https://masalmon.eu/)",
+    meetup_id = "",
+    abstract = "",
+    biography = "",
+    language = "fr"
   )
 )

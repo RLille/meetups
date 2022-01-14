@@ -6,6 +6,10 @@ social(
     institute = 'ThinkR (<a href = "https://rtask.thinkr.fr/" target = "_blank">rtask.thinkr.fr</a>)',
     date = 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 - 18:00 (CEST / UTC + 2)',
     picture = "https://avatars.githubusercontent.com/u/21193866",
-    website = "[statnmap.com](https://statnmap.com/)"
+    website = "[statnmap.com](https://statnmap.com/)",
+    meetup_id = "",
+    abstract = "",
+    biography = "",
+    language = "en"
   )
 )
