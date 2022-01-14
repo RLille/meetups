@@ -29,7 +29,7 @@ outdated <- !all(sapply(base_ads, file.exists)) |
     )
   )
 
-invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
+invisible(lapply(rscript[which(outdated)], source, encoding = "UTF-8"))
 ```
 
 ```{r, results = "asis", echo = FALSE}
