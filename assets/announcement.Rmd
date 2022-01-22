@@ -2,19 +2,20 @@
 params:
   title: "Title"
   author: "Firstname Lastname"
-  date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 – 18 h 00 (CEST / UTC + 2)'
+  date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 - 18 h 00 (CEST / UTC + 2)'
   date_short: "2021-04-29"
   meetup_id: "XXXXX"
   abstract: "Abstract"
   biography: "Biography"
   language: "en"
-title: '`r sprintf("[R Lille] \"%s\" - %s - %s", params[["title"]], params[["author"]], params[["date"]])`'
 pagetitle: Meetup
 output: github_document
 ---
 
 ```{r text-en, include = FALSE}
-text_en <- 'Dear all,
+text_en <- '# [R Lille] \"%s\" - %s - %s
+
+Dear all,
 
 R Lille (R User Group) will be hosting a meetup on %s, with %s.
 
@@ -70,7 +71,9 @@ How to reach R Lille?
 ```
 
 ```{r text-fr, include = FALSE}
-text_en <- 'Bonjour à tous et toutes,
+text_en <- '# [R Lille] \"%s\" - %s - %s
+
+Bonjour à tous et toutes,
 
 R Lille organise un nouveau MeetUp le %s, avec %s !
 
@@ -97,15 +100,15 @@ Si vous utilisez R dans votre travail ou pour le plaisir, et que vous voulez app
 Nous sommes toujours à la recherche d\'orateurs·rices pour des conférences (~1 heure), des conférences éclair (~20 minutes) ou des ateliers.  
 Si vous souhaitez participer, rien de plus simple :
 
-* Choisissez un sujet.
-* Dites-nous quand vous êtes disponible.
-* En français ou en anglais (surtout si vous souhaitez toucher une audience plus large).
+- Choisissez un sujet.
+- Dites-nous quand vous êtes disponible.
+- En français ou en anglais (surtout si vous souhaitez toucher une audience plus large).
 
 Comment contacter R Lille ?
 
-* Twitter [https://twitter.com/rlille_rug](https://twitter.com/rlille_rug) (ou [https://twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil))
-* Meetup [http://meetup.rlille.fr/](http://meetup.rlille.fr/)
-* Directement à l\'un·e des organisateurs·trices par courriel ou à l\'adresse [rlille.rug@gmail.com](mailto:rlille.rug@gmail.com).
+- Twitter [https://twitter.com/rlille_rug](https://twitter.com/rlille_rug) (ou [https://twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil))
+- Meetup [http://meetup.rlille.fr/](http://meetup.rlille.fr/)
+- Directement à l\'un·e des organisateurs·trices par courriel ou à l\'adresse [rlille.rug@gmail.com](mailto:rlille.rug@gmail.com).
 
 ---
 
@@ -128,6 +131,7 @@ Comment contacter R Lille ?
 ```{r content, results = "asis", echo = FALSE}
 cat(sprintf(
   switch(EXPR = params[["language"]], "fr" = text_fr, "en" = text_en),
+  params[["title"]], params[["author"]], params[["date"]],
   params[["date"]], params[["author"]],
   params[["date"]],
   params[["title"]], params[["author"]],
