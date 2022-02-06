@@ -5,6 +5,8 @@ social(
     author = "Aniss Louchez",
     institute = "Doctorant en Économie de la Santé",
     date = "Jeudi 18 Novembre 2021 - 13:00 CET",
+    # picture = "",
+    # website = "",
     meetup_id = "",
     abstract = "",
     biography = "",
