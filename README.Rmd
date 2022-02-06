@@ -50,7 +50,7 @@ cell <- sprintf(
       "</a>",
     "</td>"
   ),
-  meetup, meetup, base_ads[[1]], meetup
+  meetup, meetup, grep("\\.png$", base_ads, value = TRUE), meetup
 )
 cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
 cols <- 4
@@ -62,6 +62,6 @@ cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
 cat("</table>\n")
 ```
 
-_Note:_ Poster/slides based on a template
+*Note:* Poster/slides based on a template
 by [Mickaël Canouil](https://mickael.canouil.fr/)
 (<https://github.com/mcanouil/xaringan-template/>).
