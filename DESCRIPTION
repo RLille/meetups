@@ -1,0 +1,25 @@
+Package: RLilleMeetups
+Title: R Lille Meetups
+Version: 1.0.0
+Authors@R:
+    c(person(given = "Mickaël",
+             family = "Canouil",
+             role = c("aut", "cre"),
+             email = "mickael.canouil@cnrs.fr",
+             comment = c(ORCID = "0000-0002-3396-4549"))
+License: MIT + file LICENSE
+Depends:
+    R (>= 4.0.0)
+Imports:
+  here,
+  callr, 
+  pdftools, 
+  qpdf, 
+  chromote, 
+  xaringanBuilder,
+  rmarkdown,
+  xaringan
+Remotes:
+  github::rstudio/chromote, 
+  github::jhelvy/xaringanBuilder
+Encoding: UTF-8
