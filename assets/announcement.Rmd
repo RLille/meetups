@@ -8,8 +8,8 @@ params:
   abstract: "Abstract"
   biography: "Biography"
   language: "en"
-pagetitle: Meetup
 output: github_document
+pagetitle: Meetup
 ---
 
 ```{r text-en, include = FALSE}
@@ -49,6 +49,7 @@ If you want to participate, it\'s quite simple:
 How to reach R Lille?
 
 - Twitter [https://twitter.com/rlille_rug](https://twitter.com/rlille_rug) (or [https://twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil))
+- Slack [http://slack.rlille.fr](http://slack.rlille.fr)
 - Meetup [http://meetup.rlille.fr/](http://meetup.rlille.fr/)
 - Direct email to one of the organisers or to [rlille.rug@gmail.com](mailto:rlille.rug@gmail.com)
 
