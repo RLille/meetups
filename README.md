@@ -78,4 +78,4 @@ social(
 )
 ```
 
-*Note:* La date proposée dans le PR pourra être modifiée par la suite.
+*Note:* The date can be changed/updated after the PR is made.
