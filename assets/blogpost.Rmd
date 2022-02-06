@@ -1,0 +1,85 @@
+---
+params:
+  title: "Titre"
+  author: "Prénom Nom"
+  date: "jeudi 29 avril, 2021 - 18 h 00 (CEST / UTC + 2)"
+  date_short: "2021-04-29"
+  meetup_id: "XXXXX"
+  abstract: "Résumé"
+  biography: "Biographie"
+  language: "fr"
+output: github_document
+---
+
+```{r content, results = "asis", echo = FALSE}
+text <- "<!-- ---
+title: %s
+author: Mickaël CANOUIL
+date: '%s'
+slug: %s
+categories:
+  - MeetUp
+  - R
+tags:
+  - MeetUp
+  - R
+  - RUG
+description: ''
+--- -->
+
+Bonjour à toutes et tous,
+
+R Lille organise un nouveau MeetUp :  
+**%s**
+
+Celui-ci sera présenté par **%s** et aura lieu le **%s**.
+
+<!-- <center>
+<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>
+</center> -->
+<center>
+<img alt=\"Affiche Meetup R Lille - %s\" src=\"https://raw.githubusercontent.com/RLille/meetups/main/meetups/%s/ads/%s.png\" width=\"560\" height=\"auto\" />
+</center>
+
+> _[Résumé]_  
+> %s
+> 
+> _[Bio]_  
+> %s
+> 
+> _[A Propos]_  
+> Cet événement est organisé par R Lille (https://rlille.fr/) (Lille, France) et aura lieu en %s.
+
+Les inscriptions sont sur Meetup : http://meetup.rlille.fr/events/%s
+
+L'ensemble des diapositives sera mis à disposition sur le GitHub du groupe :
+https://github.com/RLille/meetups/tree/main/meetups/%s/materials
+
+Le Meetup sera enrigistré et diffusé sur Youtube (http://youtube.rlille.fr/).
+
+À bientôt !  
+Mickaël CANOUIL
+"
+
+cat(sprintf(
+  text,
+  params[["title"]],
+  Sys.Date(),
+  paste(
+    params[["date"]],
+    sub("^-|-$", "", gsub("\\\\.+", "-", tolower(make.names(params[["title"]])))),
+    sep = " - "
+  ),
+  params[["title"]],
+  params[["author"]],
+  params[["date"]],
+  params[["date_short"]],
+  params[["date_short"]],
+  params[["date_short"]],
+  params[["abstract"]],
+  params[["biography"]],
+  c("fr" = "français", "en" = "anglais")[[params[["language"]]]],
+  params[["meetup_id"]],
+  params[["date_short"]]
+))
+```
