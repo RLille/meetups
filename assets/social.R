@@ -1,7 +1,7 @@
 # # MIT License
-# 
+#
 # Copyright (c) 2022 Mickaël Canouil
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -28,12 +28,13 @@ library(xaringanBuilder)
 social <- function(
   input_poster = here::here("assets/poster.Rmd"),
   input_announcement = here::here("assets/announcement.Rmd"),
+  input_blogpost = here::here("assets/blogpost.Rmd"),
   output,
   rmd_params,
   chrome_path,
   delay = 1
 ) {
-  render_meetup <- function(input_poster, input_announcement, output, rmd_params, chrome_path, delay = 1) {
+  render_meetup <- function(input_poster, input_announcement, input_blogpost, output, rmd_params, chrome_path, delay = 1) {
     devnull <- sapply(
       X = file.path(output, c("materials", "ads")),
       FUN = dir.create, showWarnings = FALSE, recursive = TRUE
@@ -50,10 +51,24 @@ social <- function(
         con = readme_file
       )
     }
+
     if (all(nzchar(rmd_params[c("meetup_id", "abstract", "biography")]))) {
       rmarkdown::render(
         input = input_announcement,
-        output_file = sprintf("%s/ads/%s.md", output, basename(output)),
+        output_file = sprintf("%s/ads/%s-email.md", output, basename(output)),
+        encoding = "UTF-8",
+        params = rmd_params[c(
+          "title", "author", "date", "date_short",
+          "meetup_id", "abstract", "biography",
+          "language"
+        )]
+      )
+    }
+
+    if (all(nzchar(rmd_params[c("meetup_id", "abstract", "biography")]))) {
+      rmarkdown::render(
+        input = input_blogpost,
+        output_file = sprintf("%s/ads/%s-blog.md", output, basename(output)),
         encoding = "UTF-8",
         params = rmd_params[c(
           "title", "author", "date", "date_short",
