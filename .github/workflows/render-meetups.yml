@@ -18,11 +18,6 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Install Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable libcurl4-openssl-dev libpoppler-cpp-dev libmagick++-dev
-
       - name: Cache R packages
         uses: actions/cache@v1
         with:
@@ -34,7 +29,6 @@ jobs:
         run: |
           Rscript -e 'install.packages("pak")'
           Rscript -e 'pak::pkg_install(c("here", "glue", "callr", "pdftools", "qpdf", "magick", "remotes", "rstudio/chromote", "jhelvy/xaringanBuilder"))'
-          Rscript -e 'remotes::install_github()'
 
       - name: Render README
         run: Rscript -e 'rmarkdown::render("README.Rmd", output_options = list(html_preview = FALSE))'
