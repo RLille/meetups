@@ -4,7 +4,7 @@ params:
   subtitle: NULL
   author: "Firstname Lastname"
   institute: NULL
-  date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 – 18 h 00 (CEST / UTC + 2)'
+  date: 'Thursday, the 29<sup><i style="font-size:0.5em;">th</i></sup> of April, 2021 - 18 h 00 (CEST / UTC + 2)'
   picture: "user-solid.svg"
   website: "[rlille.fr](https://rlille.fr/)"
 title: "R Lille - Poster"
@@ -81,7 +81,7 @@ We are always looking for speakers:
 
 .pull-right.font150[
 
-If you want to participate, it’s quite simple:
+If you want to participate, it's quite simple:
 
 + Pick a subject
 
@@ -105,10 +105,12 @@ Or if you are interested in something specific, tell us and we will try to find 
 
 .middle.center.font150[
 
-[<i class = "fab fa-twitter"></i> @rlille_rug](https://twitter.com/RLille_RUG) (or [<i class = "fab fa-twitter"></i> @mickaelcanouil](https://twitter.com/mickaelcanouil))
+[<i class = "fab fa-twitter"></i> @RLille_RUG](https://twitter.com/RLille_RUG) (or [<i class = "fab fa-twitter"></i> @mickaelcanouil](https://twitter.com/mickaelcanouil))
 
 [<i class = "fas fa-envelope"></i> rlille.rug@gmail.com](mailto:rlille.rug@gmail.com)
 (_or to one of the organisers_)
+
+[<i class = "fab fa-slack"></i> slack.rlille.fr](http://slack.rlille.fr/)
 
 [<i class = "fab fa-meetup"></i> meetup.rlille.fr](http://meetup.rlille.fr/)
 
