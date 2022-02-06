@@ -57,7 +57,6 @@ cell <- sprintf(
   ),
   meetup, meetup, grep("\\.png$", base_ads, value = TRUE), meetup
 )
-cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
 cols <- 4
 rows <- ceiling(length(cell) / cols)
 row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
