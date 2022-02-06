@@ -49,7 +49,7 @@ cell <- sprintf(
   paste0(
     '<td align = "center">',
       '<a href="meetups/%s/materials/README.md">',
-        '<img alt="Affiche du Meetup du %s" src="%s" width="192" height="108" />',
+        '<img alt="Affiche du Meetup du %s" src="%s" width="100%" height="auto" />',
         "<br/>",
         "%s",
       "</a>",
