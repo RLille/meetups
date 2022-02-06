@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          Rscript -e 'install.packages("pak")'
+          Rscript -e 'install.packages("pak", repos = "https://r-lib.github.io/p/pak/devel/")'
           Rscript -e 'pak::pkg_install(c("here", "glue", "callr", "pdftools", "qpdf", "magick", "remotes", "rstudio/chromote", "jhelvy/xaringanBuilder"))'
 
       - name: Render README
