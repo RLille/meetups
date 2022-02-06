@@ -27,6 +27,11 @@ output:
 
 ```{r setup, include = FALSE}
 options(htmltools.dir.version = FALSE)
+if (nzchar(params[["picture"]]) | params[["picture"]] == "none") {
+  params_picture <- "user-solid.svg"
+} else {
+  params_picture <- params[["picture"]]
+}
 ```
 
 class: title-slide
@@ -49,7 +54,7 @@ class: title-slide
 
 ## `r params[["subtitle"]]`
 
-.l[<img src = "`r params[["picture"]]`" height = "120px" width = "120px" id = "picture" />]
+.l[<img src = "`r params_picture`" height = "120px" width = "120px" id = "picture" />]
 
 .r[
 ### `r params[["author"]]`
