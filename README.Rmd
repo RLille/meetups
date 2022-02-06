@@ -30,7 +30,8 @@ check_outdated <- function(r, a) {
               r[i],
               "assets/social.R",
               "assets/poster.Rmd",
-              "assets/announcement.Rmd"
+              "assets/announcement.Rmd",
+              "assets/blogpost.Rmd"
             ),
             FUN = file.mtime
           )
