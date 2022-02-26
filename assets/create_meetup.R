@@ -20,11 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-library(here)
-library(callr)
-library(rmarkdown)
-library(xaringanBuilder)
-
+#' create_meetup
+#' @import here
+#' @import callr
+#' @import rmarkdown
+#' @import xaringanBuilder
 create_meetup <- function(
   input_poster = here::here("assets/poster.Rmd"),
   input_announcement = here::here("assets/announcement.Rmd"),
