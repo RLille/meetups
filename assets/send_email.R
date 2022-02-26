@@ -29,8 +29,6 @@ send_email <- function(
   from = "rlille.rug@gmail.com",
   prefix = "[R Lille]",
   body = here::here("assets/announcement.Rmd"),
-  host = "smtp.gmail.com",
-  port = 465,
   password = Sys.getenv("secrets.GMAIL_PASSWORD")
 ) {
   email <- emayili::envelope(
@@ -53,9 +51,7 @@ send_email <- function(
     params = params,
     include_css = c("rmd", "highlight")
   )
-  emayili::server(
-    host = host,
-    port = port,
+  emayili::gmail(
     username = from,
     password = password
   )(email, verbose = TRUE)
