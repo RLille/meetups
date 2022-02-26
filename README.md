@@ -60,7 +60,7 @@ published on [rlille.fr](https://rlille.fr) and
 
 ``` r
 # `R/20YY-MM-DD.R`
-social(
+create_meetup(
   output = here::here("meetups/20YY-MM-DD"),
   rmd_params = list(
     title = "Title Of The Meetup", # title of the meetup

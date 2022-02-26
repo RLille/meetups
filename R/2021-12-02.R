@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2021-12-02"),
   rmd_params = list(
     title = 'Être un•e Utilisateur•rice de <i class = "fab fa-r-project"></i> Résilient•e',

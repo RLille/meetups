@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2020-10-07"),
   rmd_params = list(
     title = '"Débuter" avec <i class = "fab fa-r-project"></i> en Commençant par le Début ...',

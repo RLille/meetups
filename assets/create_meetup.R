@@ -25,7 +25,7 @@ library(callr)
 library(rmarkdown)
 library(xaringanBuilder)
 
-social <- function(
+create_meetup <- function(
   input_poster = here::here("assets/poster.Rmd"),
   input_announcement = here::here("assets/announcement.Rmd"),
   input_blogpost = here::here("assets/blogpost.Rmd"),
@@ -44,7 +44,7 @@ social <- function(
     if (
       !file.exists(readme_file) |
       (
-        file.mtime(readme_file) < file.mtime("assets/social.R") &
+        file.mtime(readme_file) < file.mtime("assets/create_meetup.R") &
         as.Date(basename(output)) < Sys.Date()
       )
     ) {

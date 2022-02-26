@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2021-06-17"),
   rmd_params = list(
     title = 'Reproducible Computation at Scale in R with {targets}',

@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2021-02-17"),
   rmd_params = list(
     title = "Enseignement & R",

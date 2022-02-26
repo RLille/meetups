@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2021-04-29"),
   rmd_params = list(
     title = 'How To Build A Package With The "Rmd First" Method',

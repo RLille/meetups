@@ -9,7 +9,7 @@ output: github_document
 <!-- badges: end -->
 
 ```{r, echo = FALSE, message = FALSE}
-source("assets/social.R")
+source("assets/create_meetup.R")
 
 rscript <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 meetup <- sub("\\.R$", "", basename(rscript))
@@ -28,7 +28,7 @@ check_outdated <- function(r, a) {
           sapply(
             X = c(
               r[i],
-              "assets/social.R",
+              "assets/create_meetup.R",
               "assets/poster.Rmd",
               "assets/announcement.Rmd",
               "assets/blogpost.Rmd"
@@ -83,7 +83,7 @@ and [meetup.rlille.fr](http://meetup.rlille.fr).
 
 ```{r, eval = FALSE, echo = TRUE}
 # `R/20YY-MM-DD.R`
-social(
+create_meetup(
   output = here::here("meetups/20YY-MM-DD"),
   rmd_params = list(
     title = "Title Of The Meetup", # title of the meetup

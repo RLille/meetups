@@ -1,4 +1,4 @@
-social(
+create_meetup(
   output = here::here("meetups/2020-10-30"),
   rmd_params = list(
     title = '"flexdashboard" Pour Des Tableaux de Bords (HTML) Interactifs',
