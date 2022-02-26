@@ -46,7 +46,7 @@
 Canouil](https://mickael.canouil.fr/)
 (<https://github.com/mcanouil/xaringan-template/>).
 
-## Submit A Meetup Proposals
+## Submit A Meetup Proposal
 
 To submit a meetup proposal, make a pull request (PR) which add a new R
 script (in `./R`) as described below.  
