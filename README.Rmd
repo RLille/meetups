@@ -39,7 +39,7 @@ check_outdated <- function(r, a) {
     }
   )
 }
-outdated <- check_outdated(rscript, base_ads)
+outdated <- check_outdated(rscript, base_ads) & as.Date(rscript) < Sys.Date()
 
 invisible(lapply(rscript[which(outdated)], source, encoding = "UTF-8"))
 ```
