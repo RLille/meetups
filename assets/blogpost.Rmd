@@ -55,7 +55,7 @@ Les inscriptions sont sur Meetup : http://meetup.rlille.fr/events/%s
 L'ensemble des diapositives sera mis à disposition sur le GitHub du groupe :
 https://github.com/RLille/meetups/tree/main/meetups/%s/materials
 
-Le Meetup sera enrigistré et diffusé sur Youtube (http://youtube.rlille.fr/).
+Le Meetup sera enregistré et diffusé sur Youtube (http://youtube.rlille.fr/).
 
 À bientôt !  
 Mickaël CANOUIL

@@ -72,7 +72,7 @@ How to reach R Lille?
 ```
 
 ```{r text-fr, include = FALSE}
-text_en <- '# [R Lille] \"%s\" - %s - %s
+text_fr <- '# [R Lille] \"%s\" - %s - %s
 
 Bonjour à tous et toutes,
 
