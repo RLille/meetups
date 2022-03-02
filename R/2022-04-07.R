@@ -5,7 +5,7 @@ create_meetup(
     author = "Florian Privé", # speaker
     institute = "Aarhus University (Denmark)", # speaker's institute/affiliation
     date = 'Thursday, the 7<sup><i style="font-size:0.5em;">th</i></sup> of April, 2022 - 18:00 CET', # date of the meetup
-    date = "2022-04-07", # date of the meetup using YYYY-MM-DD format
+    date_short = "2022-04-07", # date of the meetup using YYYY-MM-DD format
     picture = "https://github.com/privefl.png", # URL of the speaker's picture, or "none"
     website = "https://privefl.github.io/", # URL of the speaker's website
     abstract = "R package {bigstatsr} (https://github.com/privefl/bigstatsr) provides functions for fast statistical analysis of large-scale data encoded as matrices. The package can handle matrices that are too large to fit in memory. Package bigstatsr is based on a similar format (called `FBM`) as the format `big.matrix` provided by the R package {bigmemory}.
