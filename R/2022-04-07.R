@@ -23,6 +23,6 @@ The main features currently available in {bigstatsr} are:
 In this webinar, I will present this package and its features, as well as quickly present two other packages, {bigsparser}, which provides an on-disk sparse matrix format, and {bigsnpr}, which extends {bigstatsr} to provide specific tools for analyzing genotype data.", # abstract of the talk using Markdown syntax
     biography = "Florian Privé is a senior researcher in predictive human genetics, fond of Data Science and an R(cpp) enthusiast. He is also the founder and former organizer of the Grenoble R user group. You can find him on Twitter and GitHub as @privefl.", # biography of the speaker using Markdown syntax
     language = "en", # language of the talk
-    meetup_id = "" # to be filled by R Lille organisers
+    meetup_id = "284358899" # to be filled by R Lille organisers
   )
 )
