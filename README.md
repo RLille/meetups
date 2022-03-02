@@ -70,7 +70,7 @@ create_meetup(
     author = "Firstname Lastname", # speaker
     institute = "", # speaker's institute/affiliation
     date = 'Thursday, the DD<sup><i style="font-size:0.5em;">th</i></sup> of MM, 20YY - 18:00 CET', # date of the meetup
-    date = "20YY-MM-DD", # date of the meetup using YYYY-MM-DD format
+    date_short = "20YY-MM-DD", # date of the meetup using YYYY-MM-DD format
     picture = "none", # URL of the speaker's picture, or "none"
     website = "", # URL of the speaker's website
     abstract = "", # abstract of the talk using Markdown syntax
