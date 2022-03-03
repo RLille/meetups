@@ -42,27 +42,6 @@ check_outdated <- function(r, a) {
     r,
     a
   )
-  sapply(
-    X = seq_along(r),
-    FUN = function(i) {
-      !all(sapply(a[c(i, i + 1)], file.exists)) |
-        (
-          min(sapply(a[c(i, i + 1)], file.mtime)) <  max(
-            sapply(
-              X = c(
-                r[i],
-                "assets/create_meetup.R",
-                "assets/poster.Rmd",
-                "assets/announcement.Rmd",
-                "assets/blogpost.Rmd"
-              ),
-              FUN = file.mtime
-            )
-          ) &
-          as.Date(sub("\\.R$", "", basename(r))) > Sys.Date()
-        )
-    }
-  )
 }
 outdated <- check_outdated(rscript, base_ads)
 
