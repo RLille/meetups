@@ -2,6 +2,6 @@
 
 Speaker: Margot Brard, *Ph.D.*
 
-- Video: 
+- Video: https://youtu.be/nfP-mGIsqVs
 
-- Slides: 
+- Shiny app (demo) : https://connect.thinkr.fr/app-meetup-lille-tunis/
