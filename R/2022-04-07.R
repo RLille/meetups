@@ -1,7 +1,7 @@
 create_meetup(
   output = here::here("meetups/2022-04-07"),
   rmd_params = list(
-    title = "Memory- and Computation-Efficient Statistical Tools for Big Matrices", # title of the meetup
+    title = ".font90[Memory- and Computation-Efficient Statistical Tools for Big Matrices]", # title of the meetup
     author = "Florian Privé", # speaker
     institute = "Aarhus University (Denmark)", # speaker's institute/affiliation
     date = 'Thursday, the 7<sup><i style="font-size:0.5em;">th</i></sup> of April, 2022 - 18:00 CET', # date of the meetup
