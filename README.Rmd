@@ -59,7 +59,7 @@ cell <- sprintf(
       "</a>",
     "</td>"
   ),
-  meetup, meetup, grep("\\.png$", base_ads, value = TRUE), meetup
+  meetup, meetup, grep("\\.png$", unlist(base_ads), value = TRUE), meetup
 )
 cols <- 4
 rows <- ceiling(length(cell) / cols)
