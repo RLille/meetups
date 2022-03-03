@@ -16,7 +16,7 @@ bio_text <- paste(
 create_meetup(
   output = here::here("meetups/2022-02-24"),
   rmd_params = list(
-    title = "De la Création au Déploiement d'Applications {shiny} avec {golem}",
+    title = ".font90[De la Création au Déploiement d'Applications {shiny} avec {golem}]",
     author = "Margot Brard, *Ph.D.*",
     institute = "ThinkR",
     date = "Jeudi 24 Février 2022 - 18:30 CET",
