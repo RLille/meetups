@@ -53,7 +53,7 @@ create_meetup <- function(
       writeLines(
         sprintf(
           "# %s\n\nSpeaker: %s\n\n- Video: \n\n- Slides: ",
-          rmd_params[["title"]], rmd_params[["author"]]
+          sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]), rmd_params[["author"]]
         ),
         con = readme_file
       )
