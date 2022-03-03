@@ -76,8 +76,8 @@ cat(sprintf(
   params[["date_short"]],
   params[["date_short"]],
   params[["date_short"]],
-  params[["abstract"]],
-  params[["biography"]],
+  gsub("\n", "\n> ", params[["abstract"]], fixed = TRUE),
+  gsub("\n", "\n> ", params[["biography"]], fixed = TRUE),
   c("fr" = "français", "en" = "anglais")[[params[["language"]]]],
   params[["meetup_id"]],
   params[["date_short"]]
