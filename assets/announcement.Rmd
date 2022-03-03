@@ -132,10 +132,10 @@ Comment contacter R Lille ?
 ```{r content, results = "asis", echo = FALSE}
 cat(sprintf(
   switch(EXPR = params[["language"]], "fr" = text_fr, "en" = text_en),
-  params[["title"]], params[["author"]], params[["date"]],
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),, params[["author"]], params[["date"]],
   params[["date"]], params[["author"]],
   params[["date"]],
-  params[["title"]], params[["author"]],
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),, params[["author"]],
   params[["meetup_id"]], params[["meetup_id"]],
   params[["date_short"]], params[["date_short"]], params[["date_short"]],
   params[["abstract"]],

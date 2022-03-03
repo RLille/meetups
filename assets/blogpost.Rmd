@@ -63,14 +63,14 @@ Mickaël CANOUIL
 
 cat(sprintf(
   text,
-  params[["title"]],
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),,
   Sys.Date(),
   paste(
     params[["date"]],
-    sub("^-|-$", "", gsub("\\\\.+", "-", tolower(make.names(params[["title"]])))),
+    sub("^-|-$", "", gsub("\\\\.+", "-", tolower(make.names(sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),)))),
     sep = " - "
   ),
-  params[["title"]],
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),,
   params[["author"]],
   params[["date"]],
   params[["date_short"]],
