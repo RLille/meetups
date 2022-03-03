@@ -13,33 +13,58 @@ source("assets/create_meetup.R")
 
 rscript <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 meetup <- sub("\\.R$", "", basename(rscript))
-base_ads <- sapply(
+base_ads <- lapply(
   X = sprintf("meetups/%s/ads/%s", meetup, meetup),
   FUN = paste0,
-  c(".png", ".md")
+  c(".png", "-email.md", "-blogpost.md")
 )
 
 check_outdated <- function(r, a) {
+  mapply(
+    FUN = function(r, a) {
+      !all(sapply(a, file.exists)) ||
+        (
+          min(sapply(a, file.mtime)) < max(
+            sapply(
+              X = c(
+                r,
+                "assets/create_meetup.R",
+                "assets/poster.Rmd",
+                "assets/announcement.Rmd",
+                "assets/blogpost.Rmd"
+              ),
+              FUN = file.mtime
+            )
+          ) &
+          as.Date(sub("\\.R$", "", basename(r))) > Sys.Date()
+        )
+    },
+    r,
+    a
+  )
   sapply(
     X = seq_along(r),
     FUN = function(i) {
       !all(sapply(a[c(i, i + 1)], file.exists)) |
-        min(sapply(a[c(i, i + 1)], file.mtime)) <  max(
-          sapply(
-            X = c(
-              r[i],
-              "assets/create_meetup.R",
-              "assets/poster.Rmd",
-              "assets/announcement.Rmd",
-              "assets/blogpost.Rmd"
-            ),
-            FUN = file.mtime
-          )
+        (
+          min(sapply(a[c(i, i + 1)], file.mtime)) <  max(
+            sapply(
+              X = c(
+                r[i],
+                "assets/create_meetup.R",
+                "assets/poster.Rmd",
+                "assets/announcement.Rmd",
+                "assets/blogpost.Rmd"
+              ),
+              FUN = file.mtime
+            )
+          ) &
+          as.Date(sub("\\.R$", "", basename(r))) > Sys.Date()
         )
     }
   )
 }
-outdated <- check_outdated(rscript, base_ads) & as.Date(meetup) > Sys.Date()
+outdated <- check_outdated(rscript, base_ads)
 
 invisible(lapply(rscript[which(outdated)], source, encoding = "UTF-8"))
 ```
