@@ -20,7 +20,7 @@ Dear all,
 R Lille (R User Group) will be hosting a meetup on %s, with %s.
 
 **%s**  
-**"%s" - %s*  
+**"%s" - %s**  
 **[http://meetup.rlille.fr/events/%s/](http://meetup.rlille.fr/events/%s/)**
 
 ![Meetup RLille Poster - %s](https://raw.githubusercontent.com/RLille/meetups/main/meetups/%s/ads/%s.png)
