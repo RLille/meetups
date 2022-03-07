@@ -62,8 +62,8 @@ How to reach R Lille?
   </td>
   <td style="padding:0cm 5.4pt 0cm 5.4pt">
   <p>
-    Best regards,  
-    Mickaël CANOUIL,  
+    Best regards,</br>
+    Mickaël CANOUIL,</br>
     For R Lille (https://rlille.fr/).
   </p>
   </td>
