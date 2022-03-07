@@ -1,6 +1,6 @@
 ---
 params:
-  title: "Titre"
+  title: ".font90[Titre]"
   author: "Prénom Nom"
   date: "jeudi 29 avril, 2021 - 18 h 00 (CEST / UTC + 2)"
   date_short: "2021-04-29"
@@ -63,14 +63,14 @@ Mickaël CANOUIL
 
 cat(sprintf(
   text,
-  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),,
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", params[["title"]]),
   Sys.Date(),
   paste(
     params[["date"]],
-    sub("^-|-$", "", gsub("\\\\.+", "-", tolower(make.names(sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),)))),
+    sub("^-|-$", "", gsub("\\\\.+", "-", tolower(make.names(sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", params[["title"]]),)))),
     sep = " - "
   ),
-  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", rmd_params[["title"]]),,
+  sub("^\\.font[0-9]*\\[(.*)\\]$", "\\1", params[["title"]]),
   params[["author"]],
   params[["date"]],
   params[["date_short"]],
