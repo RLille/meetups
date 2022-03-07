@@ -64,7 +64,7 @@ How to reach R Lille?
   <p>
     Best regards,  
     Mickaël CANOUIL,  
-    For R Lille (<a href = "https://rlille.fr/">https://rlille.fr/"</a>).
+    For R Lille (https://rlille.fr/).
   </p>
   </td>
  </tr>
@@ -122,7 +122,7 @@ Comment contacter R Lille ?
   <p>
     Cordialement,  
     Mickaël CANOUIL,  
-    Pour R Lille (<a href = "https://rlille.fr/">https://rlille.fr/"</a>).
+    Pour R Lille (https://rlille.fr/).
   </p>
   </td>
  </tr>
