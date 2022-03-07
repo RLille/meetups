@@ -120,8 +120,8 @@ Comment contacter R Lille ?
   </td>
   <td style="padding:0cm 5.4pt 0cm 5.4pt">
   <p>
-    Cordialement,  
-    Mickaël CANOUIL,  
+    Cordialement,</br>
+    Mickaël CANOUIL,</br>
     Pour R Lille ([https://rlille.fr/](https://rlille.fr/)).
   </p>
   </td>
