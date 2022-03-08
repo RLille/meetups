@@ -60,8 +60,12 @@ create_meetup <- function(
     }
 
     if (all(nzchar(rmd_params[c("meetup_id", "abstract", "biography")]))) {
+      output_blogpost <- sprintf("%s/ads/%s-blogpost.md", output, basename(output))
+      if (file.exists(output_blogpost)) unlink(output_blogpost, force = TRUE)
+
       output_announcement <- sprintf("%s/ads/%s-email.md", output, basename(output))
-      if (file.exists(output_announcement)) unlink(output_announcement)
+      if (file.exists(output_announcement)) unlink(output_announcement, force = TRUE)
+
       rmarkdown::render(
         input = input_announcement,
         output_file = output_announcement,
@@ -75,11 +79,7 @@ create_meetup <- function(
           names(rmd_params)
         )]
       )
-    }
 
-    if (all(nzchar(rmd_params[c("meetup_id", "abstract", "biography")]))) {
-      output_blogpost <- sprintf("%s/ads/%s-blogpost.md", output, basename(output))
-      if (file.exists(output_blogpost)) unlink(output_blogpost)
       rmarkdown::render(
         input = input_blogpost,
         output_file = output_blogpost,
