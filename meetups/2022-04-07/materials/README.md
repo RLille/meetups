@@ -2,7 +2,7 @@
 
 Speaker: Florian Privé
 
-- Video: 
+- Video: https://youtu.be/UXKYqpAo6cs
 
 - Slides: https://privefl.github.io/R-presentation/bigrverse
 
