@@ -20,6 +20,19 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
       
       - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            github::rstudio/chromote
+            github::jhelvy/xaringanBuilder
+            any::here
+            any::callr
+            any::pdftools
+            any::qpdf
+            any::chromote
+            any::xaringanBuilder
+            any::rmarkdown
+            any::xaringan
+            any::magick
 
       - name: Render README
         run: Rscript -e 'rmarkdown::render("README.Rmd", output_options = list(html_preview = FALSE))'
