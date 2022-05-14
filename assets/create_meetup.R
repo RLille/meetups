@@ -114,6 +114,11 @@ create_meetup <- function(
     xaringanBuilder::build_pdf(xaringan_poster, output_file = output_pdf)
     xaringanBuilder::build_png(xaringan_poster, output_file = output_png, density = 300)
 
+    img <- magick::image_read(output_png)
+    img <- magick::image_trim(img)
+    img <- magick::image_resize(img, "1920x1005!")
+    img <- magick::image_write(img, output_png)
+
     invisible(output_pdf)
   }
   callr::r(
