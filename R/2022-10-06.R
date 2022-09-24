@@ -18,6 +18,6 @@ create_meetup(
     ),
     biography = "", # biography of the speaker using Markdown syntax
     language = "fr", # language of the talk
-    meetup_id = NULL # to be filled by R Lille organisers
+    meetup_id = "288690120" # to be filled by R Lille organisers
   )
 )
