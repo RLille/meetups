@@ -45,6 +45,9 @@
 <td align="center">
 <a href="meetups/2022-04-07/materials/README.md"><img alt="Affiche du Meetup du 2022-04-07" src="meetups/2022-04-07/ads/2022-04-07.png" width="100%" height="auto" /><br/>2022-04-07</a>
 </td>
+<td align="center">
+<a href="meetups/2022-10-06/materials/README.md"><img alt="Affiche du Meetup du 2022-10-06" src="meetups/2022-10-06/ads/2022-10-06.png" width="100%" height="auto" /><br/>2022-10-06</a>
+</td>
 </tr>
 </table>
 
