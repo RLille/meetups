@@ -23,7 +23,7 @@
 library(here)
 library(callr)
 library(rmarkdown)
-library(xaringanBuilder)
+library(renderthis)
 
 create_meetup <- function(
   input_poster = here::here("assets/poster.Rmd"),
@@ -111,8 +111,8 @@ create_meetup <- function(
     on.exit(unlink(xaringan_poster))
     output_pdf <- sprintf("%s/ads/%s.pdf", output, basename(output))
     output_png <- sprintf("%s/ads/%s.png", output, basename(output))
-    xaringanBuilder::build_pdf(xaringan_poster, output_file = output_pdf)
-    xaringanBuilder::build_png(xaringan_poster, output_file = output_png, density = 300)
+    renderthis::to_pdf(xaringan_poster, to = output_pdf)
+    renderthis::to_png(xaringan_poster, to = output_png, density = 300)
 
     img <- magick::image_read(output_png)
     img <- magick::image_trim(img)

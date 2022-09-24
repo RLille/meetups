@@ -28,13 +28,12 @@ jobs:
         with:
           packages: |
             github::rstudio/chromote
-            github::jhelvy/xaringanBuilder
             any::here
             any::callr
             any::pdftools
             any::qpdf
             any::chromote
-            any::xaringanBuilder
+            any::renderthis
             any::rmarkdown
             any::xaringan
             any::magick
