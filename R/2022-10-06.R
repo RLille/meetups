@@ -16,7 +16,7 @@ create_meetup(
       "À très bientôt !",
       sep = "  \n"
     ),
-    biography = "", # biography of the speaker using Markdown syntax
+    biography = " ", # biography of the speaker using Markdown syntax
     language = "fr", # language of the talk
     meetup_id = "288690120" # to be filled by R Lille organisers
   )
