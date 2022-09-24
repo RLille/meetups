@@ -1,7 +1,7 @@
 create_meetup(
   output = here::here("meetups/2022-10-06"),
   rmd_params = list(
-    title = "", # title of the meetup
+    title = "Afterwork R Lille - Rencontre & Discussion", # title of the meetup
     author = "Mickaël CANOUIL", # speaker
     institute = "R Lille", # speaker's institute/affiliation
     date = 'Jeudi 6 Octobre 2022 - 18:30 CEST', # date of the meetup
